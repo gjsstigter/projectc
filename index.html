@@ -53,7 +53,7 @@
     </div>
     <div class="list">
         <p class="list-header">In de bus</p>
-        <button class="float-right bg-green">Verplaats alle bestellingen naar "Afgeleverd"</button>
+ha        <button class="float-right bg-green">Verplaats alle bestellingen naar "Afgeleverd"</button>
         <ul>
             <li class="order-item">
                 <button class="prev">&lt;</button>
@@ -77,14 +77,16 @@
     </div>
 </div>
 </li>  
-<li  onclick="give_list()">The Customerlist
-    <ul class="dropdown">
-        <li>Jacky chan</li>
-        <li>Freddy</li>
-        <li>Dumbo</li>
-    </ul>
+<ul>
+    <li  onclick="give_list()">The Customerlist
+        <ul class="dropdown">
+            <li>Jacky chan</li>
+            <li>Freddy</li>
+            <li>Dumbo</li>
+        </ul>
     </li>
-    <script>
+</ul>
+<script>
         var arr = ["Jaap aap", "Billy Bob"];
         var menuArr = ["Select your option in the dropdown"];
         function give_list() {
