@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1meal - Home</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <nav>
+        <h1>1Meal</h1>
+        <ul>
+            <li onclick="give_menu()">Menu's 
+                <ul class="dropdown">
+                    <li>Vegan</li>
+                    <li>Halal</li>
+                    <li>Surprise</li>
+                </ul>
+            </li>
+            <li>Login</li>
+            <li>Register</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+    <header>
+        <h2>1 Meal</h2>
+    </header>
+<div id="lists">
+
+    <div class="list">
+        <p class="list-header">Bestellingen</p>
+       <button class="float-right bg-green">Verplaats alle bestellingen naar "Bereiden"</button>g
+        <ul>
+            <li class="order-item">
+                <button class="prev">&lt;</button>
+                <b>Spaghetti carbonara</b>
+                <span class="text-muted">Devin Elston</span>
+                <button class="next float-right">&gt;</button>
+            </li>
+            </ul>
+    </div>
+    <div class="list">
+        <p class="list-header">Bereiden</p>
+        <button class="float-right bg-green">Verplaats alle bestellingen naar "In de bus"</button>
+        <ul>
+            <li class="order-item">
+                <button class="prev">&lt;</button>
+                <b>Gerookte zalmsalade</b>
+                <span class="text-muted">Bryon Minutillo</span>
+                <button class="next float-right">&gt;</button>
+            </li>
+        </ul>
+    </div>
+    <div class="list">
+        <p class="list-header">In de bus</p>
+        <button class="float-right bg-green">Verplaats alle bestellingen naar "Afgeleverd"</button>
+        <ul>
+            <li class="order-item">
+                <button class="prev">&lt;</button>
+                <b>Griekse salade</b>
+                <span class="text-muted">Gaynell Zerhusen</span>
+                <button class="next float-right">&gt;</button>
+            </li>
+        </ul>
+    </div>
+    <div class="list">
+        <p class="list-header">Afgeleverd</p>
+        <button class="float-right bg-red">Archiveer alle afgeleverde bestellingen</button>
+        <ul>
+            <li class="order-item">
+                <button class="prev">&lt;</button>
+                <b>Andijviestamppot</b>
+                <span class="text-muted">Bryon Minutillo</span>
+                <button class="next float-right">&gt;</button>
+            </li>
+        </ul>
+    </div>
+</div>
+</li>  
+<li  onclick="give_list()">The Customerlist
+    <ul class="dropdown">
+        <li>Jacky chan</li>
+        <li>Freddy</li>
+        <li>Dumbo</li>
+    </ul>
+    </li>
+    <script>
+        var arr = ["Jaap aap", "Billy Bob"];
+        var menuArr = ["Select your option in the dropdown"];
+        function give_list() {
+            alert(arr);
+        }
+
+        function give_menu(){
+            alert(menuArr);
+        }
+</script>
+</body>
+</html>
