@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1meal - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
     <nav>
         <h1>1Meal</h1>
         <ul>
-            <li onclick="give_menu()">Menu's 
+            <li onclick="give_menu()">Menu's
                 <ul class="dropdown">
                     <li>Vegan</li>
                     <li>Halal</li>
@@ -25,78 +30,157 @@
     <header>
         <h2>1 Meal</h2>
     </header>
-<div id="lists">
+    <div id="app">
+        <h2>{{ melding }}</h2>
+        <div class="lists">
+            <div class="meals">
+                <h3 id="warning">bestellingen</h3>
+                <div class="list" v-for="(menu, index) in bestellingen" :key="`menu-${index}`">
+                    <dl>
+                        <dt>{{menu.menu }}</dt>
+                        <dd>{{ menu.client }}</dd>
+                    </dl>
+                    <div class="buttons">
+                        <button v-on:click="previous(index , 'bestellingen')">Stap terug</button>
+                        <button v-on:click="next(index , 'bestellingen')">Stap verder</button>
+                    </div>
+                </div>
+            </div>
+            <div class="meals">
+                <h3>In progress</h3>
+                <div class="list" v-for="(menu, index) in inprogress" :key="`menu-${index}`">
+                    <dl>
+                        <dt>{{ menu.menu }}</dt>
+                        <dd>{{ menu.client }}</dd>
+                    </dl>
+                    <div class="buttons">
+                        <button v-on:click="previous(index, 'inprogress')">Stap terug</button>
+                        <button v-on:click="next(index, 'inprogress')">Stap verder</button>
+                    </div>
+                </div>
+            </div>
+            <div class="meals">
+                <h3>On the road</h3>
+                <div class="list" v-for="(menu, index) in ontheway" :key="`menu-${index}`">
+                    <dl>
+                        <dt>{{menu.menu }}</dt>
+                        <dd>{{ menu.client }}</dd>
+                    </dl>
+                    <div class="buttons">
+                        <button v-on:click="previous(index, 'ontheway')">Stap terug</button>
+                        <button v-on:click="next(index, 'ontheway')">Stap verder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="list">
-        <p class="list-header">Bestellingen</p>
-       <button class="float-right bg-green">Verplaats alle bestellingen naar "Bereiden"</button>g
+    <!-- <nav>
         <ul>
-            <li class="order-item">
-                <button class="prev">&lt;</button>
-                <b>Spaghetti carbonara</b>
-                <span class="text-muted">Devin Elston</span>
-                <button class="next float-right">&gt;</button>
-            </li>
-            </ul>
-    </div>
-    <div class="list">
-        <p class="list-header">Bereiden</p>
-        <button class="float-right bg-green">Verplaats alle bestellingen naar "In de bus"</button>
-        <ul>
-            <li class="order-item">
-                <button class="prev">&lt;</button>
-                <b>Gerookte zalmsalade</b>
-                <span class="text-muted">Bryon Minutillo</span>
-                <button class="next float-right">&gt;</button>
+            <li onclick="give_list()">The Customerlist
+                <ul class="dropdown">
+                    <li>Jacky chan</li>
+                    <li>Freddy</li>
+                    <li>Dumbo</li>
+                </ul>
             </li>
         </ul>
-    </div>
-    <div class="list">
-        <p class="list-header">In de bus</p>
-ha        <button class="float-right bg-green">Verplaats alle bestellingen naar "Afgeleverd"</button>
-        <ul>
-            <li class="order-item">
-                <button class="prev">&lt;</button>
-                <b>Griekse salade</b>
-                <span class="text-muted">Gaynell Zerhusen</span>
-                <button class="next float-right">&gt;</button>
-            </li>
-        </ul>
-    </div>
-    <div class="list">
-        <p class="list-header">Afgeleverd</p>
-        <button class="float-right bg-red">Archiveer alle afgeleverde bestellingen</button>
-        <ul>
-            <li class="order-item">
-                <button class="prev">&lt;</button>
-                <b>Andijviestamppot</b>
-                <span class="text-muted">Bryon Minutillo</span>
-                <button class="next float-right">&gt;</button>
-            </li>
-        </ul>
-    </div>
-</div>
-<nav>  
-    <ul>
-        <li  onclick="give_list()">The Customerlist
-            <ul class="dropdown">
-                <li>Jacky chan</li>
-                <li>Freddy</li>
-                <li>Dumbo</li>
-            </ul>
-        </li>
-    </ul>
-</nav>
-<script>
-        var arr = ["Jaap aap", "Billy Bob"];
-        var menuArr = ["Select your option in the dropdown"];
-        function give_list() {
-            alert(arr);
-        }
+    </nav> -->
 
-        function give_menu(){
-            alert(menuArr);
-        }
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                melding: null,
+                bestellingen: [{
+                        id: 0,
+                        client: "Devin Elston",
+                        menu: "Spaghetti carbonara"
+                    },
+                    {
+                        id: 1,
+                        client: "Devin Elston",
+                        menu: "Spaghetti carbonara"
+                    },
+                    {
+                        id: 2,
+                        client: "Devin Elston",
+                        menu: "Spaghetti carbonara"
+                    },
+                    {
+                        id: 3,
+                        client: "Devin Elston",
+                        menu: "Spaghetti carbonara"
+                    },
+                    {
+                        id: 4,
+                        client: "Devin Elston",
+                        menu: "Spaghetti carbonara"
+                    },
+                    {
+                        id: 5,
+                        client: "Devin Elston",
+                        menu: "Spaghetti carbonara"
+                    },
+                ],
+                inprogress: [
+
+                ],
+                ontheway: [
+
+                ]
+            },
+            methods: {
+                previous: function (key, list) {
+                    console.log(list)
+                    let value = null;
+                    if (list !== "bestellingen") {
+                        switch (list) {
+                            case "inprogress":
+                                value = this.inprogress[key];
+                                this.inprogress.splice(key, 1);
+                                this.bestellingen.push(value);
+                                break;
+                            case "ontheway":
+                                value = this.ontheway[key];
+                                this.ontheway.splice(key, 1);
+                                this.inprogress.push(value);
+                                break;
+                            default:
+                                break;
+                        }
+                        this.melding = "Item is verplaatst";
+                    } else {
+                        this.melding = "In deze lijst kunt u niet verder terug";
+                    }
+                },
+                next: function (key, list) {
+                    console.log(list);
+                    let value = null;
+                    if (list !== "ontheway") {
+                        switch (list) {
+                            case "inprogress":
+                                value = this.inprogress[key];
+                                this.inprogress.splice(key, 1);
+                                this.ontheway.push(value);
+                                break;
+                            case "bestellingen":
+                                value = this.bestellingen[key];
+                                this.bestellingen.splice(key, 1);
+                                this.inprogress.push(value);
+                                break;
+                            default:
+                                break;
+                        }
+                        this.melding = "Item is verplaatst";
+                    } else {
+                        this.melding = "In deze lijst kunt u niet verder";
+                    }
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>

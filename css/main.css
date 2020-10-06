@@ -7,7 +7,14 @@
     box-sizing: border-box;
 }
 
-a, p, h1, h2, h3, li, button, input {
+a,
+p,
+h1,
+h2,
+h3,
+li,
+button,
+input {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -15,6 +22,7 @@ a, p, h1, h2, h3, li, button, input {
 body {
     height: 10000px;
 }
+
 nav {
     box-shadow: 0px -7px 20px 2px rgb(80 80 80);
     display: flex;
@@ -49,7 +57,8 @@ nav ul li .dropdown {
     z-index: 10;
 }
 
-nav ul li:hover .dropdown, nav ul li .dropdown:hover{
+nav ul li:hover .dropdown,
+nav ul li .dropdown:hover {
     display: block;
 }
 
@@ -58,7 +67,7 @@ nav ul li:hover {
 }
 
 header {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://1meal.nl/wp-content/uploads/2019/11/Banner-wordpressss.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://1meal.nl/wp-content/uploads/2019/11/Banner-wordpressss.jpg');
     background-attachment: fixed;
     background-position: center;
     height: 350px;
@@ -66,16 +75,16 @@ header {
 }
 
 header h2 {
-    color:white;
+    color: white;
     position: absolute;
     top: 40%;
     left: 50%;
     font-size: 4rem;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     font-family: 'Comfortaa', cursive;
 }
 
-.float-right {
+/* .float-right {
     float: right;
 }
 
@@ -91,4 +100,16 @@ header h2 {
     background-color: #eee;
     border: 1px solid #999;
     height: 10VH;
+} */
+
+#app {
+    padding: 0 20%;
+}
+
+#app .lists {
+    display: flex;
+}
+
+#app .lists .meals {
+    width: 400px;
 }
